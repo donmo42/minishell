@@ -6,34 +6,46 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:22:10 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/23 16:33:55 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/24 20:29:34 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strncmps(const char *s1, const char *s2, size_t n)
 {
-	int	i;
+	unsigned char	*s1cpy;
+	unsigned char	*s2cpy;
+	size_t			i;
 
 	i = 0;
-	while (s1[i] && s2[i] && s1[i] == s2[i])
+	s1cpy = (unsigned char *)s1;
+	s2cpy = (unsigned char *)s2;
+	while (i != n && (s1cpy[i] != '\0' || s2cpy[i] != '\0'))
+	{
+		if (s1cpy[i] != s2cpy[i])
+			return (s1cpy[i] - s2cpy[i]);
 		i++;
-	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+	}
+	return (0);
 }
 
-char	*search_expansion_replacement(char *str, char **envp)
+char	*search_expansion_replacement(char *var_name, char **envp)
 {
-	char	*expansion_str;
+	char	*value;
 	int		i;
 
 	i = 0;
-	expansion_str = NULL;
+	value = ft_strdup(" ");
+	if (!value)
+		return (NULL);
 	while (envp[i] != NULL)
 	{
-		if (ft_strcmp(envp[i], str) == 0)
-			expansion_str = envp[i] + ft_strlen(str + 1);
+		if (ft_strncmps(envp[i], var_name, ft_strlen(var_name)) == 0)
+			value = ft_strdup(envp[i] + ft_strlen(var_name) + 1);
 		i++;
 	}
-	return (expansion_str);
+	if (!value)
+		return (NULL);
+	return (value);
 }

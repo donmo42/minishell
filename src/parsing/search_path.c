@@ -6,11 +6,24 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:19:10 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/23 16:33:58 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/24 20:28:38 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
+
+void	free_split(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 char	**get_all_paths(char **env)
 {
