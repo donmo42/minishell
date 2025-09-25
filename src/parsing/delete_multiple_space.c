@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:07:33 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/23 16:33:46 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/25 15:20:06 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ char	*delete_multiple_space(char *str)
 		else
 		{
 			correct_str[j++] = str[i];
-			j++;
 		}
 		i++;
 	}
