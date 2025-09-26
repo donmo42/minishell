@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:02:12 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/24 20:29:40 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/26 21:52:38 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,9 @@ char	*delete_multiple_space(char *str);
 int		ft_strncmps(const char *s1, const char *s2, size_t n);
 char	*search_expansion_replacement(char *str, char **envp);
 char	*expand_variables_in_string(char *str, char **envp);
+int		count_argv(char *str);
+void	init_variable(int *argv, int *i, int *count, int *s, int *d);
+void	is_word(int *argv, int *count, int s, int d);
+char	**argv_valid_tab(char *str);
 
 #endif

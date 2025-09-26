@@ -6,7 +6,7 @@
 #    By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/22 18:56:36 by macoulib          #+#    #+#              #
-#    Updated: 2025/09/24 20:27:13 by macoulib         ###   ########.fr        #
+#    Updated: 2025/09/25 14:44:06 by macoulib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC          =   cc
 CFLAGS      =   -g3 -O0 -Wall -Wextra -Werror
 DEBUGFLAGS  =   -g3 -O0 -Wall -Wextra -Werror -fsanitize=address -fsanitize=undefined -fsanitize=leak
 
-LDFLAGS     =   -lreadline -Llibrairie/ft_libft -lft
+LDFLAGS     =   -lreadline -Llibrairie/ft_libft
 AR          =   ar rcs
 RM          =   rm -f
 

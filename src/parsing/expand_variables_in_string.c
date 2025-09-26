@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:07:39 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/25 17:18:42 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/26 22:47:11 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,10 @@ char	*expand_variables_in_string(char *str, char **envp)
 	while (str[i])
 	{
 		if (str[i] == '\'')
+		{
+			result = copy_normal(str[i], result, temp);
 			quotes_and_increment(&in_single_quotes, &i);
+		}
 		else if (str[i] == '$' && !in_single_quotes)
 		{
 			i++;

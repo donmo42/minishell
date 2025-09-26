@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 18:14:03 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/25 18:14:20 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/26 21:40:30 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,3 +57,4 @@ int	count_argv(char *str)
 		count++;
 	return (count);
 }
+

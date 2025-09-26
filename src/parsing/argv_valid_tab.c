@@ -6,12 +6,18 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 17:00:21 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/25 19:07:59 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/26 23:16:23 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
+void	three_variable_init(int *i, int *j, int *k)
+{
+	*i = 0;
+	*j = 0;
+	*k = 0;
+}
 int	get_word_len(char *str, int *start_index)
 {
 	int	len;
@@ -65,9 +71,7 @@ char	**argv_valid_tab(char *str)
 	int		i;
 	int		len;
 
-	i = 0;
-	j = 0;
-	len = 0;
+	three_variable_init(&i, &j, &len);
 	argv_tab = malloc(sizeof(char *) * (count_argv(str) + 1));
 	if (!argv_tab)
 		return (NULL);
@@ -93,7 +97,6 @@ char	**argv_valid_tab(char *str)
 int	main(void)
 {
 	char str[] = "uno 'je suis cool' \"je suis cool trois\"                 xxx";
-
 	char **result = argv_valid_tab(str);
 	if (result != NULL)
 	{
@@ -101,9 +104,6 @@ int	main(void)
 		{
 			printf("Partie %d: %s\n", i + 1, result[i]);
 		}
-
-
 	}
-
 	return (0);
 } */
