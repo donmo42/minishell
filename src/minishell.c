@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 18:57:07 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/26 22:33:48 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/09/29 16:34:47 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int	main(int ac, char **av, char **envp)
 	char buffer[100];
 
 	reado = read(0, buffer, 1024);
-
+	int xxs = closed_quotes(buffer);
+	if (!xxs)
+		return (printf("ERROR QUOTES"), 1);
 	char *xs = delete_multiple_space(buffer);
 	char *s = expand_variables_in_string(xs, envp);
-	
 	char **result = argv_valid_tab(s);
 	if (result != NULL)
 	{
@@ -35,7 +36,7 @@ int	main(int ac, char **av, char **envp)
 			printf("Partie %d: %s\n", i + 1, result[i]);
 		}
 	}
-	//printf("%s", s);
+	// printf("%s", s);
 
 	return (0);
 }
