@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:02:12 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/29 19:28:34 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/01 15:46:24 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,11 @@
 typedef struct s_data
 {
 	char	**envp;
-	char	**argv;
-	char	**argv_clean;
-	char	*cmd_path;
-	char	**path;
-	int		*infile_fd;
-	int		*outfile_fd;
-	int		*error_fd;
-	int		pipe_fd[2];
+	char	**argv_only_cmd;
+	int		infile_fd;
+	int		outfile_fd;
+	int		error_fd;
 }			t_data;
-
 
 int			ft_isspace(char c);
 int			closed_quotes(char *str);
