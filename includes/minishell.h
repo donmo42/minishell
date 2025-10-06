@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:02:12 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/01 15:46:24 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:00:49 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include "../librairie/ft_libft/libft.h"
 # include <fcntl.h>
+# include <readline/history.h>
+# include <readline/readline.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/stat.h>
@@ -25,6 +27,7 @@
 typedef struct s_data
 {
 	char	**envp;
+	char	**argv;
 	char	**argv_only_cmd;
 	int		infile_fd;
 	int		outfile_fd;
@@ -44,5 +47,15 @@ void		init_variable(int *argv, int *i, int *count, int *s, int *d);
 void		is_word(int *argv, int *count, int s, int d);
 char		**argv_valid_tab(char *str);
 int			ft_strcmp(char *s1, char *s2);
+int			ft_parsing(char *str, t_data *data, char **envp);
+int			creat_fd_infile(t_data *data, char *tab_argv, int *i);
+int			creat_fd_outfile(t_data *data, char *tab_argv, int *i);
+int			is_redirection_operator(char *av);
+int			handle_redirection(t_data *data, char **av, int ac, char **envp);
+int			nbr_new_cmd_tab(char **av);
+void		created_tab_only_cmd(char **av, t_data *data, int ac);
+int			direction_error(char *str, t_data *data);
+int			fd_and_cmd_tab(t_data *data, char **av, int ac, char **envp);
+int			redirection_detected(char **av);
 
 #endif

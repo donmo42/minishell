@@ -6,37 +6,34 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 18:57:07 by macoulib          #+#    #+#             */
-/*   Updated: 2025/09/29 16:34:47 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/06 19:11:38 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
 
 int	main(int ac, char **av, char **envp)
-
 {
-	(void)av;
-	(void)ac;
-	(void)envp;
+	char	*input;
+	t_data	*data;
 
-	int reado;
-	char buffer[100];
-
-	reado = read(0, buffer, 1024);
-	int xxs = closed_quotes(buffer);
-	if (!xxs)
-		return (printf("ERROR QUOTES"), 1);
-	char *xs = delete_multiple_space(buffer);
-	char *s = expand_variables_in_string(xs, envp);
-	char **result = argv_valid_tab(s);
-	if (result != NULL)
+	data = malloc(sizeof(data));
+	if (!data)
+		return (0);
+	while (1)
 	{
-		for (int i = 0; result[i] != NULL; i++)
+		input = readline("minishell$ ");
+		if (!input)
 		{
-			printf("Partie %d: %s\n", i + 1, result[i]);
+			ft_putstr_fd("exit", 1);
+			write(1, "\n", 1);
+			break ;
 		}
+		if (*input)
+			add_history(input);
+		if (!ft_parsing(input, data, envp))
+			break ;
+		exe(data, av, ac, envp);
 	}
-	// printf("%s", s);
-
 	return (0);
 }
