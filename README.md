@@ -1,5 +1,7 @@
-# minishell
-![ (minishell)](./minishelle.png)
+<div align="center">
+  <img src="./minishelle.png" alt="(minishell)" />
+</div>
+
 </br>
 
 🐚 Minishell : L'interpréteur de Commandes de 42
