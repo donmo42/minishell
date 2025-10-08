@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 16:39:06 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/06 18:30:42 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:01:34 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	is_redirection_operator(char *av)
 	return (0);
 }
 
-int	creat_fd_infile(t_data *data, char *tab_argv, int *i)
+int	creat_fd_infile(t_data *data, char **tab_argv, int *i)
 {
 	if (ft_strncmp(tab_argv[*i], "<", 1))
 	{
@@ -32,7 +32,7 @@ int	creat_fd_infile(t_data *data, char *tab_argv, int *i)
 	return (1);
 }
 
-int	creat_fd_outfile(t_data *data, char *tab_argv, int *i)
+int	creat_fd_outfile(t_data *data, char **tab_argv, int *i)
 {
 	if (ft_strncmp(tab_argv[*i], ">", 1))
 	{
@@ -45,6 +45,8 @@ int	creat_fd_outfile(t_data *data, char *tab_argv, int *i)
 	else if (ft_strncmp(tab_argv[*i], ">>", 2))
 	{
 		data->outfile_fd = open(tab_argv[*i + 1], O_WRONLY | O_CREAT | O_APPEND,
+				0644);
+		data->error_fd = open(tab_argv[*i + 1], O_WRONLY | O_CREAT | O_TRUNC,
 				0644);
 		if (data->outfile_fd == -1)
 			return (perror("open out fd"), -1);
@@ -63,13 +65,15 @@ int	creat_fd_outfile(t_data *data, char *tab_argv, int *i)
 int	handle_redirection(t_data *data, char **av, int ac, char **envp)
 {
 	int	i;
+	
 
+	(void)envp;
 	i = 0;
 	while (av[i])
 	{
-		if (!creat_fd_infile(data, av[i], &i))
+		if (!creat_fd_infile(data, av, &i))
 			return (-1);
-		if (!creat_fd_out(data, av[i], &i))
+		if (!creat_fd_outfile(data, av, &i))
 			return (-1);
 		i++;
 	}

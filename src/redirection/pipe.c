@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/29 14:13:39 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/06 18:45:55 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 11:02:51 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,19 @@ int	handle_pipe(char **tab_argv)
 	int i;
 	int fd;
 	int pipe_fd[2];
+	pid_t pid ;
+	
 
 	i = 0;
 	fd = 0;
+	pid = fork();
+	
 	while (tab_argv[i])
 	{
 		if (ft_strncmp(tab_argv[i], "|", ft_strlen(tab_argv[i])))
 		{
 			pipe(pipe_fd);
-			if (fork == 0)
+			if (pid == 0)
 			{
 				dup2(fd, 0);
 				close(pipe_fd[0]);
@@ -39,4 +43,5 @@ int	handle_pipe(char **tab_argv)
 		}
 		i++;
 	}
+	return (0);
 }

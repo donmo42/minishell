@@ -6,16 +6,16 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 16:45:43 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/06 18:40:04 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:28:49 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/minishell.h"
 
-int	is_separator(const char *s)
+int	is_separator(char *str)
 {
-	return (!ft_strcmp(s, ">") || !ft_strcmp(s, ">>") || !ft_strcmp(s, "<")
-		|| !ft_strcmp(s, "|"));
+	return (!ft_strcmp(str, ">") || !ft_strcmp(str, ">>") || !ft_strcmp(str, "<")
+		|| !ft_strcmp(str, "|"));
 }
 
 int	check_after_redirection(char **av)

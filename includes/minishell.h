@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:02:12 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/06 19:00:49 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:59:16 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ void		is_word(int *argv, int *count, int s, int d);
 char		**argv_valid_tab(char *str);
 int			ft_strcmp(char *s1, char *s2);
 int			ft_parsing(char *str, t_data *data, char **envp);
-int			creat_fd_infile(t_data *data, char *tab_argv, int *i);
-int			creat_fd_outfile(t_data *data, char *tab_argv, int *i);
+int			creat_fd_infile(t_data *data, char **tab_argv, int *i);
+int			creat_fd_outfile(t_data *data, char **tab_argv, int *i);
 int			is_redirection_operator(char *av);
 int			handle_redirection(t_data *data, char **av, int ac, char **envp);
 int			nbr_new_cmd_tab(char **av);

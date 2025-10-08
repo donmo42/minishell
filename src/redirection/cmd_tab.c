@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 18:23:42 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/06 18:23:53 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:56:35 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,11 @@ void	created_tab_only_cmd(char **av, t_data *data, int ac)
 	int i;
 
 	i = 0;
+	(void)ac;
 	data->argv_only_cmd = (char **)malloc(sizeof(char *) * (nbr_new_cmd_tab(av)
 				+ 1));
 	if (!data->argv_only_cmd)
-		return (NULL);
+		return ;
 	while (av[i])
 	{
 		if (is_redirection_operator(av[i]))
@@ -53,7 +54,7 @@ void	created_tab_only_cmd(char **av, t_data *data, int ac)
 				while (i > 0)
 					free(data->argv_only_cmd[--i]);
 				free(data->argv_only_cmd);
-				return (NULL);
+				return ;
 			}
 			i++;
 		}

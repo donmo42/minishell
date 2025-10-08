@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 18:57:07 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/06 19:11:38 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 10:21:12 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	main(int ac, char **av, char **envp)
 {
 	char	*input;
 	t_data	*data;
+	(void)av;
+	(void)ac;
 
 	data = malloc(sizeof(data));
 	if (!data)
@@ -33,7 +35,7 @@ int	main(int ac, char **av, char **envp)
 			add_history(input);
 		if (!ft_parsing(input, data, envp))
 			break ;
-		exe(data, av, ac, envp);
+		//exe(data, av, ac, envp);
 	}
 	return (0);
 }
