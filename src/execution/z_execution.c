@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 20:09:52 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/08 14:24:40 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 23:09:55 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	exe_cmd(t_data *data, char **envp)
 	char	*cmd_path;
 
 	split_cmd = ft_split(data->argv_only_cmd[0], ' ');
-	//if (!split_cmd[0] || !split_cmd)
-		//print_error_and_exit("Error split command");
+	// if (!split_cmd[0] || !split_cmd)
+	// print_error_and_exit("Error split command");
 	cmd_path = find_path(envp, split_cmd[0]);
 	if (cmd_path == NULL)
 		ft_putstr_fd("pipex: command not found: ", 2);
 	execve(cmd_path, split_cmd, envp);
-	//print_error_and_exit("execve");
+	// print_error_and_exit("execve");
 }
 
 void	dup_and_close_fd(t_data *data)
@@ -54,16 +54,29 @@ void	close_fd(t_data *data)
 		close(data->outfile_fd);
 }
 
-void	exe(t_data *data, char **av, int ac, char **env)
+void	exe(t_data *data, char *input, int ac, char **env)
 {
-	pid_t	pid;
-	int		status;
+	int		i;
+	char	**av;
 
-	if(redirect_and_cmds(data, av, ac, env))
+	// pid_t	pid;
+	// int		status;
+	i = 0;
+	av = argv_valid_tab(input);
+	while (av[i])
+		i++;
+	data->argv = malloc(sizeof(char *) * (i + 1));
+	i = 0;
+	while (av[i])
 	{
-		printf("bad , x");
-			return ;
-	};
+		data->argv[i] = ft_strdup(av[i]);
+		i++;
+	}
+	data->argv[i] = NULL;
+	i = 0;
+	if (redirect_and_cmds(data, ac, env))
+		printf("");
+	/*
 	pid = fork();
 	if (pid == -1)
 		return ;
@@ -76,5 +89,5 @@ void	exe(t_data *data, char **av, int ac, char **env)
 	{
 		close_fd(data);
 		waitpid(pid, &status, 0);
-	}
+	}*/
 }

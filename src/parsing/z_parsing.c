@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/23 14:45:31 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/08 12:23:52 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 23:28:54 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int	ft_parsing(char *str, t_data *data, char **envp)
 	if (!quote)
 		return (0);
 	str_whithout_space = delete_multiple_space(str);
-	if (direction_error(str_whithout_space, data))
-		return (0);
+	//if (direction_error(str_whithout_space, data))
+	//	return (0);
 	if_variable = expand_variables_in_string(str_whithout_space, envp);
 	argv_tab = argv_valid_tab(str_whithout_space);
 	data->argv = argv_tab;
