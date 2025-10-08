@@ -1,5 +1,7 @@
 # minishell
 ![ (minishell)](./minishelle.png)
+</br>
+
 🐚 Minishell : L'interpréteur de Commandes de 42
 
 🚀 Introduction

@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:02:12 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/08 10:59:16 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:18:58 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,12 @@ int			ft_parsing(char *str, t_data *data, char **envp);
 int			creat_fd_infile(t_data *data, char **tab_argv, int *i);
 int			creat_fd_outfile(t_data *data, char **tab_argv, int *i);
 int			is_redirection_operator(char *av);
-int			handle_redirection(t_data *data, char **av, int ac, char **envp);
+int			redirect_and_cmds(t_data *data, char **av, int ac, char **envp);
 int			nbr_new_cmd_tab(char **av);
 void		created_tab_only_cmd(char **av, t_data *data, int ac);
 int			direction_error(char *str, t_data *data);
 int			fd_and_cmd_tab(t_data *data, char **av, int ac, char **envp);
 int			redirection_detected(char **av);
+void		exe(t_data *data, char **av, int ac, char **env);
 
 #endif

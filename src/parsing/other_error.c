@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 16:45:43 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/08 10:28:49 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 12:55:17 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	is_separator(char *str)
 {
-	return (!ft_strcmp(str, ">") || !ft_strcmp(str, ">>") || !ft_strcmp(str, "<")
-		|| !ft_strcmp(str, "|"));
+	return (!ft_strcmp(str, ">") || !ft_strcmp(str, ">>") || !ft_strcmp(str,
+			"<") || !ft_strcmp(str, "|"));
 }
 
 int	check_after_redirection(char **av)
@@ -42,6 +42,7 @@ int	direction_error(char *str, t_data *data)
 
 	i = ft_strlen(str) - 1;
 	j = 0;
+	(void)data;
 	while (j > i && (str[i] == ' ' || str[i] == '\t'))
 		j++;
 	if (str[j] == '|' || str[j] == '>')
@@ -50,7 +51,6 @@ int	direction_error(char *str, t_data *data)
 		i--;
 	if (i >= 0 && (str[i] == '|' || str[i] == '>' || str[i] == '<'))
 		return (1);
-	if (check_after_redirection(data->argv))
-		return (1);
 	return (0);
 }
+

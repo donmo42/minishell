@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/27 16:39:06 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/08 11:01:34 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/08 14:26:30 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	creat_fd_outfile(t_data *data, char **tab_argv, int *i)
 		data->outfile_fd = open(tab_argv[*i + 1], O_WRONLY | O_CREAT | O_TRUNC,
 				0644);
 		if (data->outfile_fd == -1)
-			return (perror("open out fd"), -1);
+			return (perror("open in fd"), -1);
 		(*i)++;
 	}
 	else if (ft_strncmp(tab_argv[*i], ">>", 2))
@@ -56,19 +56,19 @@ int	creat_fd_outfile(t_data *data, char **tab_argv, int *i)
 		data->error_fd = open(tab_argv[*i + 1], O_WRONLY | O_CREAT | O_TRUNC,
 				0644);
 		if (data->error_fd == -1)
-			return (perror("open in fd"), -1);
+			return (perror("open error fd"), -1);
 		(*i)++;
 	}
 	return (1);
 }
 
-int	handle_redirection(t_data *data, char **av, int ac, char **envp)
+int	redirect_and_cmds(t_data *data, char **av, int ac, char **envp)
 {
 	int	i;
-	
 
 	(void)envp;
 	i = 0;
+	
 	while (av[i])
 	{
 		if (!creat_fd_infile(data, av, &i))

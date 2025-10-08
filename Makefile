@@ -6,7 +6,7 @@
 #    By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/22 18:56:36 by macoulib          #+#    #+#              #
-#    Updated: 2025/10/08 10:55:26 by macoulib         ###   ########.fr        #
+#    Updated: 2025/10/08 12:11:05 by macoulib         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,8 @@ $(LIBFT_DIR)/libft.a: $(LIBFT_OBJ)
 # Règle générique pour la compilation de TOUS les fichiers .c
 # 1. Utilise 'vpath' pour trouver les sources dans 'src' et ses sous-dossiers.
 # 2. Utilise '%' pour générer l'objet (ex: obj/file.o) à partir de la source trouvée.
-vpath %.c $(SRC_DIR) $(foreach dir, $(SRC_SUBDIRS), $(SRC_DIR)/$(dir))
+# NOUVELLE LIGNE CORRIGÉE
+vpath %.c $(LIBFT_DIR) $(SRC_DIR) $(foreach dir, $(SRC_SUBDIRS), $(SRC_DIR)/$(dir))
 
 $(OBJ_DIR)/%.o: %.c $(HEADER_DEPS)
 	@echo "$(CYAN)Compiling $(NC)$<"
