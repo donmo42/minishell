@@ -1,4 +1,5 @@
 # minishell
+![ (minishell)](./minishelle.png)
 🐚 Minishell : L'interpréteur de Commandes de 42
 
 🚀 Introduction
@@ -140,6 +141,6 @@ Prérequis
 
     La librairie readline (souvent disponible via brew install readline sur macOS ou sudo apt-get install libreadline-dev sur Linux).
     git clone https://github.com/donmo42/minishell
-cd minishell
-make
+cd minishell - 
+make -
 ./minishell
