@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 20:09:52 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/08 23:09:55 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/09 20:40:02 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	exe(t_data *data, char *input, int ac, char **env)
 	int		i;
 	char	**av;
 
-	// pid_t	pid;
-	// int		status;
+	 pid_t	pid;
+	 int		status;
 	i = 0;
 	av = argv_valid_tab(input);
 	while (av[i])
@@ -74,9 +74,9 @@ void	exe(t_data *data, char *input, int ac, char **env)
 	}
 	data->argv[i] = NULL;
 	i = 0;
-	if (redirect_and_cmds(data, ac, env))
-		printf("");
-	/*
+redirect_and_cmds(data, ac, env);
+		
+
 	pid = fork();
 	if (pid == -1)
 		return ;
@@ -89,5 +89,5 @@ void	exe(t_data *data, char *input, int ac, char **env)
 	{
 		close_fd(data);
 		waitpid(pid, &status, 0);
-	}*/
+	}
 }
