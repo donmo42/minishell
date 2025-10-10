@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 20:09:52 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/10 17:28:16 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/10 17:43:24 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ void	exe(t_data *data, char *input, int ac, char **env)
 	data->argv[i] = NULL;
 	i = 0;
 	redirect_and_cmds(data, ac, env);
-	
 	pid = fork();
 	if (pid == -1)
 		return ;
