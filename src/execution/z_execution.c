@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 20:09:52 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/09 20:40:02 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/10 17:28:16 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	exe_cmd(t_data *data, char **envp)
 	// print_error_and_exit("Error split command");
 	cmd_path = find_path(envp, split_cmd[0]);
 	if (cmd_path == NULL)
-		ft_putstr_fd("pipex: command not found: ", 2);
-	execve(cmd_path, split_cmd, envp);
+			ft_putstr_fd("command not found: ", 2);
+	execve(cmd_path, data->argv_only_cmd, envp);
 	// print_error_and_exit("execve");
 }
 
@@ -41,7 +41,7 @@ void	dup_and_close_fd(t_data *data)
 	}
 	if (data->error_fd != -1)
 	{
-		dup2(data->error_fd, 1);
+		dup2(data->error_fd, 2);
 		close(data->error_fd);
 	}
 }
@@ -58,9 +58,9 @@ void	exe(t_data *data, char *input, int ac, char **env)
 {
 	int		i;
 	char	**av;
+	pid_t	pid;
+	int		status;
 
-	 pid_t	pid;
-	 int		status;
 	i = 0;
 	av = argv_valid_tab(input);
 	while (av[i])
@@ -74,9 +74,8 @@ void	exe(t_data *data, char *input, int ac, char **env)
 	}
 	data->argv[i] = NULL;
 	i = 0;
-redirect_and_cmds(data, ac, env);
-		
-
+	redirect_and_cmds(data, ac, env);
+	
 	pid = fork();
 	if (pid == -1)
 		return ;
