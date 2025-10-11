@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/22 19:02:12 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/10 13:56:23 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/11 16:09:31 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_data
 	char	**envp;
 	char	**argv;
 	char	**argv_only_cmd;
+	char	***argv_pipeline;
 	int		infile_fd;
 	int		outfile_fd;
 	int		error_fd;
@@ -57,6 +58,8 @@ int			create_cmd_tab(t_data *data);
 int			direction_error(char *str, t_data *data);
 int			fd_and_cmd_tab(t_data *data, char **av, int ac, char **envp);
 int			redirection_detected(char **av);
+void		create_pipeline_tab(t_data *data);
 void		exe(t_data *data, char *input, int ac, char **env);
+int			count_pipeline(t_data *data);
 
 #endif

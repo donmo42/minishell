@@ -6,7 +6,7 @@
 /*   By: macoulib <macoulib@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 20:09:52 by macoulib          #+#    #+#             */
-/*   Updated: 2025/10/10 17:43:24 by macoulib         ###   ########.fr       */
+/*   Updated: 2025/10/11 16:30:11 by macoulib         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	exe_cmd(t_data *data, char **envp)
 	// print_error_and_exit("Error split command");
 	cmd_path = find_path(envp, split_cmd[0]);
 	if (cmd_path == NULL)
-			ft_putstr_fd("command not found: ", 2);
+		ft_putstr_fd("command not found: ", 2);
 	execve(cmd_path, data->argv_only_cmd, envp);
 	// print_error_and_exit("execve");
 }
@@ -56,10 +56,10 @@ void	close_fd(t_data *data)
 
 void	exe(t_data *data, char *input, int ac, char **env)
 {
-	int		i;
-	char	**av;
-	pid_t	pid;
-	int		status;
+	int i;
+	char **av;
+	pid_t pid;
+	int status;
 
 	i = 0;
 	av = argv_valid_tab(input);
